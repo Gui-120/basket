@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Partidas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      background-color: #4f46e5; /* Roxo */
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    header img {
+      height: 40px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .partida {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .partida-info {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .partida-info h2 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+    }
+
+    .partida-info p {
+      margin: 0;
+      color: #666;
+    }
+
+    .partida-data {
+      font-weight: bold;
+      color: #333;
+      min-width: 120px;
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .partida {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .partida-data {
+        text-align: left;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="nbalogo.png" alt="NBA Logo">
+    <h1>Partidas Agendadas</h1>
+  </header>
+
+  <main class="container">
+    <div class="partida">
+      <div class="partida-info">
+        <h2>Lakers vs Celtics</h2>
+        <p>Staples Center</p>
+      </div>
+      <div class="partida-data">24/05/2025 20:00</div>
+    </div>
+
+    <div class="partida">
+      <div class="partida-info">
+        <h2>Warriors vs Bulls</h2>
+        <p>Chase Center</p>
+      </div>
+      <div class="partida-data">26/05/2025 19:30</div>
+    </div>
+
+<div class="partida">
+      <div class="partida-info">
+        <h2>Pato Basquete vs São Paulo</h2>
+        <p>Chase Center</p>
+      </div>
+      <div class="partida-data">26/05/2025 19:30</div>
+    </div>
+
+  </main>
+
+</body>
+</html>
