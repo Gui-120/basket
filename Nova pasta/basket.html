@@ -4,73 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda de Partidas</title>
+  
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff3e0;
+      color: #fff;
     }
 
     header {
-      background-color: #4f46e5; /* Roxo */
-      color: white;
-      padding: 15px 20px;
+      background-color: #222;
+      color: "yellow";
+      padding: 20px;
       display: flex;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    header img {
-      height: 40px;
-      margin-right: 15px;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     header h1 {
-      font-size: 24px;
+      font-size: 28px;
       margin: 0;
+      font-weight: 500;
     }
 
     .container {
-      max-width: 800px;
-      margin: 30px auto;
+      max-width: 900px;
+      margin: 40px auto;
       padding: 0 20px;
     }
 
     .partida {
-      background-color: white;
-      border-radius: 10px;
+      background-color: #34495e;
+      border-radius: 8px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .partida-info {
-      flex: 1;
-      min-width: 200px;
+    .partida:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
     .partida-info h2 {
-      margin: 0 0 5px 0;
-      font-size: 18px;
+      font-size: 20px;
+      margin: 0;
+      color: #fff;
     }
 
     .partida-info p {
       margin: 0;
-      color: #666;
+      color: #ddd;
+      font-size: 14px;
     }
 
     .partida-data {
       font-weight: bold;
-      color: #333;
-      min-width: 120px;
-      text-align: right;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .btn-logout {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #e74c3c;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-logout:hover {
+      background-color: #c0392b;
     }
 
     @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+
       .partida {
         flex-direction: column;
         align-items: flex-start;
@@ -81,12 +103,12 @@
         margin-top: 10px;
       }
     }
+
   </style>
 </head>
 <body>
 
   <header>
-    <img src="nbalogo.png" alt="NBA Logo">
     <h1>Partidas Agendadas</h1>
   </header>
 
@@ -107,7 +129,7 @@
       <div class="partida-data">26/05/2025 19:30</div>
     </div>
 
-<div class="partida">
+    <div class="partida">
       <div class="partida-info">
         <h2>Pato Basquete vs São Paulo</h2>
         <p>Chase Center</p>
@@ -115,7 +137,23 @@
       <div class="partida-data">26/05/2025 19:30</div>
     </div>
 
+    <a href="login.html" class="btn-logout">Sair</a>
   </main>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCx_G6hW-3MmWqmVSZcTET6xNVwb5zR0o",
+      authDomain: "agendapartidas.firebaseapp.com",
+      projectId: "agendapartidas",
+      storageBucket: "agendapartidas.firebasestorage.app",
+      messagingSenderId: "235408704525",
+      appId: "1:235408704525:web:f2e31da388fdba75698144"
+    };
+
+    // Inicializa o Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 
 </body>
 </html>

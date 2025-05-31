@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar - Agenda de Partidas</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #1e1e1e;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Garante que o conteúdo fique centralizado verticalmente */
+      text-align: center; /* Centraliza o texto do corpo */
+    }
+
+    .login-container {
+      max-width: 380px;
+      padding: 40px;
+      background-color: #f39c12;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="password"], input[type="submit"] {
+      width: 100%;
+      max-width: 350px; /* Limita o tamanho máximo */
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333;
+      background-color: #f9f9f9;
+      box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    }
+
+    input[type="submit"] {
+      background-color: #e67e22;
+      border: none;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #d35400;
+    }
+
+    .register-link {
+      margin-top: 20px;
+    }
+
+    .register-link a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .login-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      input[type="text"], input[type="password"], input[type="submit"] {
+        max-width: 100%; /* Nos dispositivos menores, o tamanho será 100% */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+ <div class="register-container">
+    <h2>Cadastrar-se</h2>
+    <form id="registerForm">
+      <input type="text" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="password" placeholder="Senha" required>
+      <input type="submit" value="Cadastrar">
+    </form>
+
+   <div class="login-link">
+  <p><a href="login.html" style="color: white;">Já tem uma conta? Faça login</a></p>
+</div>
+
+  </div>
+  <script>
+    // Configuração do Firebase (substitua com as credenciais do seu projeto)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCCx_G6hW-3MmWqmVSZcTET6xNVwb5zR0o",
+      authDomain: "agendapartidas.firebaseapp.com",
+      projectId: "agendapartidas",
+      storageBucket: "agendapartidas.firebasestorage.app",
+      messagingSenderId: "235408704525",
+      appId: "1:235408704525:web:f2e31da388fdba75698144"
+    };
+
+    // Inicializar Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Selecionar o formulário e campos de entrada
+    const registerForm = document.getElementById('registerForm');
+    const emailField = document.getElementById('email');
+    const passwordField = document.getElementById('password');
+
+    // Função para registro
+    registerForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      const email = emailField.value;
+      const password = passwordField.value;
+
+      // Realizar o cadastro com Firebase Authentication
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Registro bem-sucedido
+          const user = userCredential.user;
+          alert('Cadastro bem-sucedido! Bem-vindo, ' + user.email);
+          // Redirecionar para a página de login após o cadastro
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          // Em caso de erro
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert('Erro ao cadastrar: ' + errorMessage);
+        });
+    });
+  </script>
+</body>
+</html>
